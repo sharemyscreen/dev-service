@@ -1,0 +1,24 @@
+{
+  "name": "dev-service",
+  "version": "0.0.0",
+  "description": "Developper service",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sharemyscreen/dev-service.git"
+  },
+  "author": "Maxime Guedj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharemyscreen/dev-service/issues"
+  },
+  "homepage": "https://github.com/sharemyscreen/dev-service#readme"
+}
