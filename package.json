@@ -20,6 +20,7 @@
     "require-dir": "^0.3.0"
   },
   "scripts": {
+    "preversion": "gulp lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -31,5 +32,9 @@
   "bugs": {
     "url": "https://github.com/sharemyscreen/dev-service/issues"
   },
-  "homepage": "https://github.com/sharemyscreen/dev-service#readme"
+  "homepage": "https://github.com/sharemyscreen/dev-service#readme",
+  "files": [
+    "index.js",
+    "route/"
+  ]
 }
