@@ -1,0 +1,7 @@
+dbConfig:
+  host: localhost
+  port: 27017
+  dbName: sms-dev-test
+
+server:
+  port: 3000
