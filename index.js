@@ -1,6 +1,7 @@
 const express = require('express');
 const logger = require('winston');
 const bodyParser = require('body-parser');
+const httpCommon = require('sharemyscreen-http-common');
 
 const client = require('./route/client');
 
@@ -18,6 +19,12 @@ function getApp () {
   client.registerRoute(devRouter);
 
   devApp.use('/v1', devRouter);
+
+  // Error handler
+  devApp.use(function (err, req, res, next) {
+    logger.error(err);
+    httpCommon.utils.sendReply(res, httpCommon.error.internalServerError(err));
+  });
   return devApp;
 }
 
