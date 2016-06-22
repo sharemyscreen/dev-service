@@ -19,6 +19,7 @@ function getApp () {
   client.registerRoute(devRouter);
 
   devApp.use('/v1', devRouter);
+  devApp.use('/doc', express.static(__dirname + '/doc', {dotfiles: "allow"}));
 
   // Error handler
   devApp.use(function (err, req, res, next) {

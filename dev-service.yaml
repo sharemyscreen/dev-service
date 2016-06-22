@@ -2,8 +2,8 @@ api:
   name: ShareMyScreen Developer service
   description: |
     The developer service of the ShareMyScreen api allows developer to create clients for the OAuth2 authentication.;;;
-    It is available here: {{dev.sharemyscreen.fr:3000:http://dev.sharemyscren.fr:3000}};;;
-    The **login** service documentation will be available here {{login.sharemyscreen.fr:3000/doc:http://login.sharemyscren.fr:3000/doc}}
+    It is available here: {{dev.sharemyscreen.fr:3000!http://dev.sharemyscren.fr:3000}};;;
+    The **login** service documentation will be available here {{login.sharemyscreen.fr:3000/doc!http://login.sharemyscren.fr:3000/doc}}
 
   paragraphs:
     -
@@ -11,7 +11,7 @@ api:
         text: |
           The developer service of the ShareMyScreen api allows developer to create clients for the OAuth2 authentication.;;;
           As explained in the RFC, creating a client a compulsory to use the OAuth2;;;
-          Once your client created, save the *key* and the *secret* value, they will be usefull to authenticated your request to the {{login service::http://login.sharemyscren.fr:3000/doc}}
+          Once your client created, save the *key* and the *secret* value, they will be usefull to authenticated your request to the {{login service!http://login.sharemyscren.fr:3000/doc}}
     -
       Request and Reply format:
         text: |
