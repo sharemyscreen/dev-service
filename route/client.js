@@ -15,7 +15,7 @@ function getClients (req, res, next) {
       fClients.forEach(function (client, i) {
         fClients[i] = client.safePrint();
       });
-      res.status(200).json(fClients);
+      httpCommonUtils.sendReply(res, 200, fClients);
     }
   });
 }

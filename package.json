@@ -14,6 +14,7 @@
     "winston": "^2.2.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "config": "^1.21.0",
     "eslint": "^2.13.1",
     "eslint-config-standard": "^5.3.1",
@@ -29,10 +30,10 @@
   },
   "scripts": {
     "start": "node ./run.js",
-    "preversion": "gulp lint",
+    "preversion": "gulp lint && npm test",
     "version": "gulp changelog && git add CHANGELOG.md",
     "postversion": "git push origin master --tags",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "istanbul cover _mocha -- test/test.js -R spec"
   },
   "repository": {
     "type": "git",

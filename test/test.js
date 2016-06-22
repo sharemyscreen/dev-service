@@ -1,38 +1,40 @@
 const devApp = require('../');
 const config = require('config');
-const logger = require('winston');
+const requireDir = require('require-dir');
 const mongoose = require('mongoose');
-const supertest = require('supertest');
 
-const url = 'http://dev.sharemyscreen.local:' + config.get('server.port');
-const devSrv = supertest(url);
-
-describe('Testing developper service', function () {
-  before(function (done) {
-    mongoose.connection.on('error', function (err) {
-      logger.error('Unable to connect to the database ...');
-      logger.error(err);
-      done(err);
-    });
-
-    mongoose.connection.on('open', function () {
-      logger.info('Connection success !');
-
-      const app = devApp.getApp();
-      app.listen(config.get('server.port'), function () {
-        done();
-      });
-    });
-
-    const connectionStr = 'mongodb://' + config.get('dbConfig.host') + ':' +
-      config.get('dbConfig.port') + '/' +
-      config.get('dbConfig.dbName');
-    mongoose.connect(connectionStr);
+before(function (done) {
+  mongoose.connection.on('error', function (err) {
+    console.error('Unable to connect to the database ...');
+    console.error(err);
+    done(err);
   });
 
-  it('Should work', function (done) {
-    devSrv.get('/v1/client')
-      .expect(200)
-      .end(done);
+  mongoose.connection.on('open', function () {
+    console.log('Connection success !');
+
+    console.log('Dropping test database ...');
+    mongoose.connection.db.dropDatabase(function (err) {
+      if (err) {
+        done(err);
+      } else {
+        console.log('Database dropped');
+        const app = devApp.getApp();
+        app.listen(config.get('server.port'), function () {
+          done();
+        });
+      }
+    });
+  });
+
+  const connectionStr = 'mongodb://' + config.get('dbConfig.host') + ':' +
+    config.get('dbConfig.port') + '/' +
+    config.get('test.dbConfig.dbName');
+  mongoose.connect(connectionStr);
+});
+
+describe('Testing developer service', function () {
+  describe('Testing routes', function () {
+    requireDir('./route');
   });
 });

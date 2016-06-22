@@ -1,0 +1,11 @@
+{
+  "client1": {
+    "name": "Client uno"
+  },
+  "client2": {
+    "name": "Client dos"
+  },
+  "client3": {
+    "name": "Client tres"
+  }
+}
