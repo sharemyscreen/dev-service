@@ -12,6 +12,9 @@ function getClients (req, res, next) {
     if (err) {
       next(err);
     } else {
+      fClients.forEach(function (client, i) {
+        fClients[i] = client.safePrint();
+      });
       res.status(200).json(fClients);
     }
   });
@@ -25,7 +28,7 @@ function postClient (req, res, next) {
       if (err) {
         next(err);
       } else {
-        httpCommonUtils.sendReply(res, 201, cClient.toObject());
+        httpCommonUtils.sendReply(res, 201, cClient.safePrint());
       }
     });
   }
