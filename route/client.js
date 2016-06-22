@@ -1,4 +1,5 @@
 const clientModel = require('sharemyscreen-common').clientModel;
+const httpCommonUtils = require('sharemyscreen-http-common').utils;
 
 function registerRoute (router) {
   router.get('/clients', getClients);
@@ -24,7 +25,7 @@ function postClient (req, res, next) {
       if (err) {
         next(err);
       } else {
-        res.status(201).json(cClient);
+        httpCommonUtils.sendReply(res, 201, cClient.toObject());
       }
     });
   }
