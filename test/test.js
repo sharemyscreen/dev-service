@@ -8,7 +8,6 @@ const url = 'http://dev.sharemyscreen.local:' + config.get('server.port');
 const devSrv = supertest(url);
 
 describe('Testing developper service', function () {
-
   before(function (done) {
     mongoose.connection.on('error', function (err) {
       logger.error('Unable to connect to the database ...');
@@ -36,5 +35,4 @@ describe('Testing developper service', function () {
       .expect(200)
       .end(done);
   });
-
 });

@@ -1,5 +1,6 @@
 const express = require('express');
 const logger = require('winston');
+const bodyParser = require('body-parser');
 
 const client = require('./route/client');
 
@@ -9,6 +10,8 @@ var devRouter = null;
 function getApp () {
   logger.info('Initializing dev app ...');
   devApp = express();
+  devApp.use(bodyParser.json());
+
   devRouter = express.Router();
 
   // Register all routes
