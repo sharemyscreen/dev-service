@@ -1,5 +1,5 @@
 const clientModel = require('sharemyscreen-common').clientModel;
-const httpCommon = require('sharemyscreen-http-common');
+const httpHelper = require('sharemyscreen-http-helper');
 
 function registerRoute (router) {
   router.get('/clients', getClients);
@@ -15,26 +15,26 @@ function getClients (req, res, next) {
       fClients.forEach(function (client, i) {
         fClients[i] = client.safePrint();
       });
-      httpCommon.utils.sendReply(res, 200, fClients);
+      httpHelper.sendReply(res, 200, fClients);
     }
   });
 }
 
 function postClient (req, res, next) {
   if (req.body.name == null) {
-    httpCommon.utils.sendReply(res, httpCommon.error.invalidRequestError());
+    httpHelper.sendReply(res, httpHelper.error.invalidRequestError());
   } else {
     clientModel.getByName(req.body.name, function (err, fClient) {
       if (err) {
         next(err);
       } else if (fClient != null) {
-        httpCommon.utils.sendReply(res, httpCommon.error.clientExist());
+        httpHelper.sendReply(res, httpHelper.error.clientExist());
       } else {
         clientModel.createNew(req.body.name, function (err, cClient) {
           if (err) {
             next(err);
           } else {
-            httpCommon.utils.sendReply(res, 201, cClient.safePrint());
+            httpHelper.sendReply(res, 201, cClient.safePrint());
           }
         });
       }

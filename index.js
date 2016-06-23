@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const logger = require('winston');
 const bodyParser = require('body-parser');
-const httpCommon = require('sharemyscreen-http-common');
+const httpHelper = require('sharemyscreen-http-helper');
 
 const client = require('./route/client');
 
@@ -25,8 +25,11 @@ function getApp () {
   // Error handler
   devApp.use(function (err, req, res, next) {
     logger.error(err);
-    httpCommon.utils.sendReply(res, httpCommon.error.internalServerError(err));
+    httpHelper.sendReply(res, httpHelper.error.internalServerError(err));
   });
+
+  logger.info('Dev app initialized');
+
   return devApp;
 }
 

@@ -10,7 +10,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "sharemyscreen-common": "git+ssh://git@github.com/sharemyscreen/common.git",
-    "sharemyscreen-http-common": "git+ssh://git@github.com/sharemyscreen/http-common.git",
+    "sharemyscreen-http-helper": "git+ssh://git@github.com/sharemyscreen/http-helper.git",
     "winston": "^2.2.0"
   },
   "devDependencies": {
