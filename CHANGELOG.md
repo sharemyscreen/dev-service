@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.0
+
+* Verison 1.0.0 released
+
+*guedj_m, Thu Jun 23 2016 15:05:08 GMT+0200 (CEST)*
+
+---
 ## 0.4.0
 
 * Add error for duplicate client
