@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const logger = require('winston');
 const bodyParser = require('body-parser');
@@ -19,7 +20,7 @@ function getApp () {
   client.registerRoute(devRouter);
 
   devApp.use('/v1', devRouter);
-  devApp.use('/doc', express.static(__dirname + '/doc', {dotfiles: "allow"}));
+  devApp.use('/doc', express.static(path.join(__dirname, '/doc'), {dotfiles: 'allow'}));
 
   // Error handler
   devApp.use(function (err, req, res, next) {
