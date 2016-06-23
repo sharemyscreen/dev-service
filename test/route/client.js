@@ -22,7 +22,26 @@ describe('Testing client routes', function () {
             expect(res.body.key).to.not.be.undefined;
             expect(res.body.secret).to.not.be.undefined;
             expect(res.body.created_at).to.not.be.undefined;
-            expect(res.body.trusted).to.be.false;
+            expect(res.body.trusted).to.be.true;
+            done();
+          }
+        });
+    });
+
+    it('Should reply error when trying to create the same client', function (done) {
+      devSrv
+        .post('/v1/client')
+        .send(fixture.client1)
+        .set('Content-Type', 'application/json')
+        .expect(403)
+        .end(function (err, res) {
+          if (err) {
+            done(err);
+          } else {
+            expect(res.body).to.not.be.undefined;
+            expect(res.body.code).to.equal(1);
+            expect(res.body.sub_code).to.equal(1);
+            expect(res.body.message).to.equal('Client exists');
             done();
           }
         });
@@ -44,7 +63,7 @@ describe('Testing client routes', function () {
             expect(res.body[0].key).to.not.be.undefined;
             expect(res.body[0].secret).to.not.be.undefined;
             expect(res.body[0].created_at).to.not.be.undefined;
-            expect(res.body[0].trusted).to.be.false;
+            expect(res.body[0].trusted).to.be.true;
             done();
           }
         });

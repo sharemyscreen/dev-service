@@ -24,11 +24,19 @@ function postClient (req, res, next) {
   if (req.body.name == null) {
     httpCommon.utils.sendReply(res, httpCommon.error.invalidRequestError());
   } else {
-    clientModel.createNew(req.body.name, function (err, cClient) {
+    clientModel.getByName(req.body.name, function (err, fClient) {
       if (err) {
         next(err);
+      } else if (fClient != null) {
+        httpCommon.utils.sendReply(res, httpCommon.error.clientExist());
       } else {
-        httpCommon.utils.sendReply(res, 201, cClient.safePrint());
+        clientModel.createNew(req.body.name, function (err, cClient) {
+          if (err) {
+            next(err);
+          } else {
+            httpCommon.utils.sendReply(res, 201, cClient.safePrint());
+          }
+        });
       }
     });
   }

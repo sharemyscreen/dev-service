@@ -62,9 +62,10 @@ api:
 
     -
       Client exist:
-        status: 400
+        status: 403
         code: 1
-        message: Client exist
+        subcode: 1
+        message: Client exists
         fix: Change the client name
 
   objects:
