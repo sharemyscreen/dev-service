@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+* Add error for duplicate client
+
+*guedj_m, Thu Jun 23 2016 13:15:34 GMT+0200 (CEST)*
+
+---
 ## 0.3.0
 
 * Add documentation hosting on /doc path
