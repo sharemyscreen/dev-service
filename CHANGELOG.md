@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+* Minor patch
+
+*guedj_m, Sat Jun 25 2016 15:57:03 GMT+0200 (CEST)*
+
+---
 ## 1.0.0
 
 * Verison 1.0.0 released
