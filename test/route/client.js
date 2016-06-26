@@ -7,10 +7,10 @@ const url = config.get('test.server.url') + ':' + config.get('test.server.port')
 const devSrv = supertest(url);
 
 describe('Testing client routes', function () {
-  describe('Testing client creation (POST /v1/client)', function () {
+  describe('Testing client creation (POST /v1/clients)', function () {
     it('Should create a new client', function (done) {
       devSrv
-        .post('/v1/client')
+        .post('/v1/clients')
         .send(fixture.client1)
         .set('Content-Type', 'application/json')
         .expect(201)
@@ -30,7 +30,7 @@ describe('Testing client routes', function () {
 
     it('Should reply error when trying to create the same client', function (done) {
       devSrv
-        .post('/v1/client')
+        .post('/v1/clients')
         .send(fixture.client1)
         .set('Content-Type', 'application/json')
         .expect(403)

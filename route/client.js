@@ -4,7 +4,7 @@ const httpHelper = require('sharemyscreen-http-helper');
 function registerRoute (router) {
   router.get('/clients', getClients);
 
-  router.post('/client', postClient);
+  router.post('/clients', postClient);
 }
 
 function getClients (req, res, next) {
