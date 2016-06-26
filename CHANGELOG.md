@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+* Update user creation route from /v1/client to /v1/clients
+
+*guedj_m, Sun Jun 26 2016 20:26:46 GMT+0200 (CEST)*
+
+---
 ## 1.0.1
 
 * Minor patch
